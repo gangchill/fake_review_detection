@@ -2,6 +2,10 @@ import json
 import re
 import onlineFeatures
 import ngram
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 def getReviewLength(reviewText):
 	#This function returns the length of the review text
@@ -91,9 +95,9 @@ def extractExclamationQuestionMarks(reviewText):
 	
 
 def main():
-	for line in open("/home/santosh/dataMiningProject/alchemyapi_python/sampleReview.json"):
+	for line in open("/home/ubuntu/yenlp/yelp_restaurants_reviews_1000_neg.json"):
 		my_data=json.loads(line)
-		reviewText = my_data["text"]
+		reviewText = unicode(my_data["text"]).encode("utf-8")
 		print(reviewText)
 		#x=getPersonalPronouns(reviewText)
 		#x=extarctAverageRating(my_data)
