@@ -3,9 +3,6 @@ import re
 import onlineFeatures
 import ngram
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 def getReviewLength(reviewText):
 	#This function returns the length of the review text

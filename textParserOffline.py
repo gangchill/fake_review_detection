@@ -12,21 +12,20 @@ totalReviews = 0
 formatTimestamp = "%d%b%H%M%S"
 timestamp = datetime.datetime.now()
 pattern = r'[^ ]+'
-path = r'C:\Python34\sampleData'
-outputFile = open(r'C:\Python34\trainingDataOffline_' + timestamp.strftime(formatTimestamp) + '.txt','w')
+path = r'/home/ubuntu/yenlp/datafiles'
+outputFile = open(os.getcwd()+r'/output/'+r'yelp_restaurants_reviews_1000_' + timestamp.strftime(formatTimestamp) + '.txt','w')
 
 to_write_header = "#reviewID,#businessID,Rating,#secondPronouns,#capitalWords,#excSentences,Length,EentityCount,SentimentScore,#reviewerFriend,reviewerReviewCount,Class(1-Spam/0-Genuine)\n"
 outputFile.write(to_write_header)
-
-dataFiles = [(x) for x in os.listdir(path) if os.path.isfile(path+"\\"+x)]
-
+dataFiles = [(x) for x in os.listdir(path) if os.path.isfile(path+"/"+x)]
+print (len(dataFiles))
 for p in dataFiles[0:len(dataFiles)]:
 
     print("Opening :" + p)
 
     try :
         
-        with open(path+"\\"+p) as file:
+        with open(path+"/"+p) as file:
             simpleJson = json.load(file)
             #print(str(type(simpleJson)))
             #print(str(type(simpleJson["nonReccomnded"])))
